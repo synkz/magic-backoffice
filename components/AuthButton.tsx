@@ -95,7 +95,6 @@ export default function AuthButton({ compact = false }: AuthButtonProps) {
       setMessageType("error");
     } else {
       router.push("/");
-      router.refresh();
     }
   }
 

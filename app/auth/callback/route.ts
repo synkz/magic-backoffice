@@ -1,5 +1,7 @@
+export const runtime = 'nodejs';
+
 import { NextRequest, NextResponse } from "next/server";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createRouteHandlerClient } from "@/lib/supabase/server";
 
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
@@ -12,7 +14,8 @@ export async function GET(request: NextRequest) {
   }
 
   if (code) {
-    const supabase = createServerSupabaseClient();
+    const response = NextResponse.redirect(new URL("/dashboard", requestUrl.origin));
+    const supabase = createRouteHandlerClient(request, response);
     const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
 
     if (exchangeError) {
@@ -20,7 +23,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL("/login?error=callback", requestUrl.origin));
     }
 
-    return NextResponse.redirect(new URL("/dashboard", requestUrl.origin));
+    return response;
   }
 
   return NextResponse.redirect(new URL("/login?error=no_code", requestUrl.origin));

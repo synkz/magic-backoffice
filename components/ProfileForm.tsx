@@ -29,6 +29,7 @@ export default function ProfileForm({ initialFullName, userId }: ProfileFormProp
 
     const { error } = await supabase
       .from("profiles")
+      // @ts-expect-error - Type inference issue with Supabase client
       .update({ full_name: fullName.trim() })
       .eq("id", userId);
 

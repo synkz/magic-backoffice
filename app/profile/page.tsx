@@ -39,7 +39,7 @@ export default async function ProfilePage() {
                 disabled
                 className="w-full rounded-lg border border-gray-600 bg-gray-700 px-3 py-2 text-gray-400 cursor-not-allowed"
               />
-              <p className="text-xs text-gray-500 mt-1">L'email ne peut pas être modifié</p>
+              <p className="text-xs text-gray-500 mt-1">L&apos;email ne peut pas être modifié</p>
             </div>
 
             <ProfileForm initialFullName={profile?.full_name || ""} userId={user.id} />
