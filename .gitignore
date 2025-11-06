@@ -1,0 +1,17 @@
+﻿# build & deps
+node_modules
+.next
+out
+dist
+
+# env & logs
+.env*
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
