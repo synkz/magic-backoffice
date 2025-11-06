@@ -1,13 +1,12 @@
-// next.config.ts
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  // Désactiver ESLint pendant le build pour éviter les erreurs sur Vercel
+  // Les règles sont configurées dans eslint.config.mjs
   eslint: {
-    // Empêche les erreurs ESLint de bloquer le build Vercel
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // Empêche les erreurs TS (comme "no-explicit-any") de bloquer le build
     ignoreBuildErrors: true,
   },
 }
